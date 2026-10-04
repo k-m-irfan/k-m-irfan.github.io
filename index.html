@@ -29,14 +29,7 @@
     --ease: cubic-bezier(.2, .7, .2, 1);
     color-scheme: light;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0e0f12; --ink: #e8eaef; --ink-2: #9aa0ad; --hair: #2a2d34;
-      --field: #121a2e; --on-field: #dbe3fa; --field-hair: #2a3658;
-      --link: #8fa6ff; --accent-ink: #0e0f12;
-      color-scheme: dark;
-    }
-  }
+  /* light by default; dark only when chosen with the toggle */
   :root[data-theme="dark"] {
     --bg: #0e0f12; --ink: #e8eaef; --ink-2: #9aa0ad; --hair: #2a2d34;
     --field: #121a2e; --on-field: #dbe3fa; --field-hair: #2a3658;
@@ -421,13 +414,13 @@
     ? `<svg class="ic brand" viewBox="0 0 24 24" aria-hidden="true"${COLORS[k] ? ` style="fill:${COLORS[k]}"` : ""}><path d="${ICONS[k]}"/></svg>`
     : `<svg class="ic line" viewBox="0 0 24 24" aria-hidden="true"><path d="${LINE[k] || LINE.link}"/></svg>`;
 
-  // theme: follows the OS until the visitor picks one
+  // theme: light by default; remembers the visitor's choice once they toggle
 
   const root = document.documentElement;
   const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
   try { const t = localStorage.getItem("flat-theme"); if (t) root.dataset.theme = t; } catch (e) {}
   $("theme").onclick = () => {
-    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    const dark = root.dataset.theme === "dark";
     root.dataset.theme = dark ? "light" : "dark";
     try { localStorage.setItem("flat-theme", root.dataset.theme); } catch (e) {}
   };
