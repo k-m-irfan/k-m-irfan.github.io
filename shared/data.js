@@ -176,7 +176,7 @@ window.PROFILE = {
       org: "MBZUAI",
       role: "Research Associate",
       place: "Abu Dhabi, UAE",
-      text: "Co-first author of BiMediX2 (Meta Llama Impact Innovation Award), co-developed LLMVoX and the ViMUL evaluation toolkit, mentored an MSc thesis (MAviS) and UGRIP interns. Built live demos for GITEX, UNGA79, Abu Dhabi Sustainability Week and Machines Can See.",
+      text: "Co-first author of BiMediX2 (Meta Llama Impact Innovation Award), co-developed LLMVoX and the ViMUL evaluation toolkit, mentored an MSc thesis (MAviS) and UGRIP interns. Built live demos for GITEX, UNGA79 and Abu Dhabi Sustainability Week.",
     },
     {
       when: "Jul 2022 to Feb 2024",
