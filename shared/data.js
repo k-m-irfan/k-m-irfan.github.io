@@ -1,0 +1,216 @@
+// Single source of truth for every site variant.
+// Edit content here; all designs render from this object.
+// Fields marked TODO are placeholders to fill in later.
+
+window.PROFILE = {
+  name: "Mohammed Irfan",
+  initials: "MI",
+  role: "PhD Student · Computer Vision",
+  affiliation: "MBZUAI",
+  affiliationFull: "Mohamed bin Zayed University of Artificial Intelligence (MBZUAI)",
+  location: "Abu Dhabi, UAE",
+  photo: "shared/assets/me.jpg",
+  tagline:
+    "My research centers on building multimodal AI systems for personalized assistance: systems that can see, listen, remember, reason, and speak.",
+  // paragraphs separated by a blank line ("\n\n"); bioEmphasis phrases are set in bold
+  bio:
+    "I’m a PhD student in Computer Vision at MBZUAI in Abu Dhabi, advised by Prof. Hisham Cholakkal. I joined MBZUAI in 2024 as a Research Associate, after two years at IIT Madras Research Park building multilingual speech and sign-language systems.\n\n" +
+    "My research centers on building multimodal AI systems for personalized assistance: systems that can see, listen, remember, reason, and speak, with a focus on long-video understanding and multimodal reasoning, grounded and agentic reasoning, efficient representations for memory and retrieval, and lightweight speech and wearable interfaces for assistive applications. Across these areas, I am interested in building compact, structured systems that combine specialized components for perception, memory, retrieval, reasoning, and interaction, and can operate efficiently, including on device. I also explore these ideas in specialized settings such as healthcare and medical vision-language models, as well as embodied AI and robotics, where assistants must perceive and act in the physical world. The broader goal is to develop AI that can meaningfully assist people in their day-to-day lives.",
+  bioEmphasis: ["personalized assistance", "see, listen, remember, reason, and speak", "compact, structured systems", "including on device"],
+  cv: "shared/cv.pdf",
+  links: {
+    scholar: "https://scholar.google.com/citations?user=GJp0keYAAAAJ&hl=en",
+    github: "https://github.com/k-m-irfan",
+    linkedin: "https://www.linkedin.com/in/k-m-i/",
+    huggingface: "https://huggingface.co/k-m-irfan",
+  },
+
+  // newest first
+  news: [
+    { date: "Dec 2026", tag: "Upcoming", text: "Presenting <b>LongShOT</b> at <b>NeurIPS 2026</b>.", link: "https://longshot.cvmbzuai.com/" },
+    { date: "Oct 2026", tag: "Upcoming", text: "Presenting <b>Omni-Embed-Mini</b> and <b>MediX-R1</b> at <b>EMNLP 2026</b>.", link: null },
+    { date: "Sep 2026", tag: "Paper", text: "Released <b>Hard Vision, Easy Vision</b>: what GPT-6 Astra reveals across 55 vision benchmarks.", link: "https://arxiv.org/pdf/2609.35718" },
+    { date: "Sep 2026", tag: "Award", text: "<b>StreamShot</b> won <b>1st place</b> (EgoConv) and <b>LongShotV2</b> was <b>runner-up</b> (EgoLongQA) at the <b>Wearable AI Grand Challenge @ ECCV 2026</b>.", link: "https://lnkd.in/p/dQV43V4m" },
+    { date: "Sep 2026", tag: "Paper", text: "<b>LongShOT</b> accepted to <b>NeurIPS 2026</b> as a poster.", link: "https://longshot.cvmbzuai.com/" },
+    { date: "Aug 2026", tag: "Paper", text: "<b>Omni-Embed-Mini</b> and <b>MediX-R1</b> accepted to <b>EMNLP 2026 Findings</b>.", link: "https://omniembed.cvmbzuai.com/" },
+    { date: "Jul 2026", tag: "Paper", text: "Released <b>LongShOT</b>, a benchmark and agent for omni-modal reasoning in long videos.", link: "https://longshot.cvmbzuai.com/" },
+    { date: "Jan 2026", tag: "Demo", text: "Personalized wearable assistants for elderly care at <b>Machines Can Think 2026</b>.", link: null },
+    { date: "Nov 2025", tag: "Talk", text: "Presenting <b>BiMediX2</b> at <b>EMNLP 2025</b>.", link: null },
+    { date: "Oct 2025", tag: "Demo", text: "Showcased assistive AI wearables (smart glasses, smartwatch, EEG) at <b>GITEX 2025</b>.", link: "https://mbzuai.ac.ae/news/mbzuai-to-showcase-assistive-ai-technologies-at-gitex-2025/" },
+    { date: "Aug 2025", tag: "Paper", text: "Three papers at <b>EMNLP 2025</b>: <b>BiMediX2</b>, <b>ViMUL</b> and <b>MAviS</b>.", link: null },
+    { date: "Aug 2025", tag: "Career", text: "Started my <b>PhD in Computer Vision</b> at MBZUAI.", link: null },
+    { date: "2025", tag: "Grant", text: "Received the <b>NVIDIA Academic Grant</b> to advance clinical reasoning in healthcare LLMs and LMMs.", link: null },
+    { date: "May 2025", tag: "Paper", text: "<b>LLMVoX</b> accepted to <b>ACL 2025 Findings</b>.", link: "https://mbzuai-oryx.github.io/LLMVoX/" },
+    { date: "Jan 2025", tag: "Demo", text: "Conversational robot dog demo at <b>Abu Dhabi Sustainability Week 2025</b>.", link: null },
+    { date: "Dec 2024", tag: "LinkedIn", text: "<b>Yann LeCun</b> shares BiMediX2.", link: "https://www.linkedin.com/feed/update/urn:li:activity:7274887516778909696/" },
+    { date: "Oct 2024", tag: "Demo", text: "Speech-enabled VLM app and voice-controlled robot dog at <b>GITEX 2024</b>.", link: "https://mbzuai.ac.ae/news/making-human-machine-conversation-more-lifelike-than-ever-at-gitex/" },
+    { date: "Sep 2024", tag: "Award", text: "<b>BiMediX2</b> wins the <b>Meta Llama Impact Innovation Award</b>.", link: "https://ai.meta.com/blog/llama-impact-grant-innovation-award-winners-2024/" },
+    { date: "Sep 2024", tag: "Demo", text: "BiMediX2 assistant presented at the <b>AI4SD event at UNGA79</b>.", link: null },
+    { date: "Mar 2024", tag: "Career", text: "Joined <b>MBZUAI</b> as a Research Associate.", link: null },
+  ],
+
+  // links: only Project Page, Paper and GitHub, whichever exist.
+  // Ordered newest release first (date = first public release, YYYY-MM).
+  // media: {type:"video"|"image", src, poster, fit:"cover"|"contain", bg, ratio: native "w / h", clip: optional CSS clip-path matching the media's own outline; the MediX-R1 phone sits at 9/4/4/7px (l/t/r/b) inside 350x720 with ~61px corners}
+  publications: [
+    {
+      id: "omniembed",
+      date: "2026-10",
+      title: "Omni-Embed-Mini: Binding Modalities Without Forgetting via Dense Distillation",
+      short: "Omni-Embed-Mini",
+      authors: "<u>M. I. Kurpath</u>, J. M. Kaithakkodan, S. S. Mullappilly, I. Laptev, H. Cholakkal",
+      venue: "EMNLP 2026 Findings",
+      year: 2026,
+      summary: "A 0.9B omni-modal embedding model mapping text, speech, audio, images, video and documents into one cosine space, without touching the text backbone.",
+      media: { type: "video", src: "shared/assets/omniembed.mp4", poster: "shared/assets/omniembed.jpg", fit: "cover", ratio: "16 / 9" },
+      links: { "Project Page": "https://omniembed.cvmbzuai.com/", Paper: "https://arxiv.org/pdf/2610.02148", GitHub: "https://github.com/k-m-irfan/Omni-Embed-Mini" },
+    },
+    {
+      id: "astra",
+      date: "2026-09",
+      title: "Hard Vision, Easy Vision: What GPT-6 Astra Reveals Across Computer Vision",
+      short: "Hard Vision, Easy Vision",
+      authors: "H. Rasheed*, <u>M. I. Kurpath</u>*, B. Ren, H. Cholakkal, F. S. Khan, S. Khan",
+      venue: "arXiv preprint",
+      year: 2026,
+      summary: "34 capabilities, 55 benchmarks, nine areas of vision: where frontier general-purpose models match specialists and where they still fall short.",
+      media: { type: "image", src: "shared/assets/astra.jpg", fit: "cover", ratio: "1400 / 878" },
+      links: { "Project Page": "https://mbzuai-oryx.github.io/frontier-vision/", Paper: "https://arxiv.org/pdf/2609.35718", GitHub: "https://github.com/mbzuai-oryx/frontier-vision" },
+    },
+    {
+      id: "medix",
+      date: "2026-02",
+      title: "MediX-R1: Open Ended Medical Reinforcement Learning",
+      short: "MediX-R1",
+      authors: "S. S. Mullappilly*, <u>M. I. Kurpath</u>*, J. M. Kaithakkodan, O. Mohamed, M. Zidan, F. Khan, S. Khan, R. Anwer, H. Cholakkal",
+      venue: "EMNLP 2026 Findings",
+      year: 2026,
+      summary: "Medical VLMs trained with composite RL rewards for open-ended clinical reasoning. The 8B model beats 27B MedGemma, and a 2B variant runs on a phone.",
+      media: { type: "video", src: "shared/assets/medix.mp4", poster: "shared/assets/medix.jpg", fit: "contain", bg: "#0b0b0c", ratio: "350 / 720", clip: "inset(0.556% 1.143% 0.972% 2.571% round 17.43% / 8.47%)" },
+      links: { "Project Page": "https://medix.cvmbzuai.com/", Paper: "https://arxiv.org/pdf/2602.23363", GitHub: "https://github.com/mbzuai-oryx/MediX-R1" },
+    },
+    {
+      id: "longshot",
+      date: "2025-12",
+      title: "LongShOT: A Benchmark for Omni-Modal Reasoning in Long Videos",
+      short: "LongShOT",
+      authors: "<u>M. I. Kurpath</u>*, J. M. Kaithakkodan*, J. Zhou, S. S. Mullappilly, M. Almansoori, …, H. Cholakkal",
+      venue: "NeurIPS 2026 Poster",
+      year: 2026,
+      summary: "An intent-driven, rubric-scored benchmark for long videos across vision, speech and audio, plus LongShOTAgent, a training-free evidence-seeking agent with tool use.",
+      media: { type: "video", src: "shared/assets/longshot.mp4", poster: "shared/assets/longshot.jpg", fit: "cover", ratio: "16 / 9" },
+      links: { "Project Page": "https://longshot.cvmbzuai.com/", Paper: "https://arxiv.org/pdf/2512.16978", GitHub: "https://github.com/mbzuai-oryx/longshot" },
+    },
+    {
+      id: "mavis",
+      date: "2025-11",
+      title: "MAviS: A Multimodal Conversational Assistant for Avian Species",
+      short: "MAviS",
+      authors: "Y. Kryklyvets, <u>M. I. Kurpath</u>, S. S. Mullappilly, J. Zhou, F. S. Khan, R. M. Anwer, S. Khan, H. Cholakkal",
+      venue: "EMNLP 2025",
+      year: 2025,
+      summary: "An image + audio + text assistant and benchmark covering ~1,000 bird species. Grew out of an MSc thesis I mentored.",
+      media: { type: "image", src: "shared/assets/mavis.jpg", fit: "cover", ratio: "1400 / 811" },
+      links: { Paper: "https://arxiv.org/pdf/2603.07294", GitHub: "https://github.com/yevheniia-uv/MAviS" },
+    },
+    {
+      id: "vimul",
+      date: "2025-06",
+      title: "A Culturally-diverse Multilingual Multimodal Video Benchmark & Model",
+      short: "ViMUL",
+      authors: "B. S. Shafique, A. Vayani, M. Maaz, H. A. Rasheed, D. Dissanayake, <u>M. I. Kurpath</u>, …, S. Khan, F. S. Khan",
+      venue: "EMNLP 2025",
+      year: 2025,
+      summary: "A 14-language video LMM benchmark with culturally diverse categories, plus the ViMUL model. Its evaluation toolkit powered a CVPR 2025 workshop challenge.",
+      media: { type: "image", src: "shared/assets/vimul.jpg", fit: "cover", ratio: "1400 / 783" },
+      links: { "Project Page": "https://mbzuai-oryx.github.io/ViMUL/", Paper: "https://arxiv.org/pdf/2506.07032" },
+    },
+    {
+      id: "llmvox",
+      date: "2025-03",
+      title: "LLMVoX: Autoregressive Streaming Text-to-Speech Model for Any LLM",
+      short: "LLMVoX",
+      authors: "S. Shikhar, <u>M. I. Kurpath</u>, S. S. Mullappilly, J. Lahoud, F. S. Khan, R. M. Anwer, S. Khan, H. Cholakkal",
+      venue: "ACL 2025 Findings",
+      year: 2025,
+      summary: "A lightweight, LLM-agnostic streaming TTS that gives any LLM a low-latency voice. #3 Paper of the Day on Hugging Face.",
+      media: { type: "image", src: "shared/assets/llmvox.jpg", fit: "contain", bg: "#ffffff", ratio: "1400 / 742" },
+      links: { "Project Page": "https://mbzuai-oryx.github.io/LLMVoX/", Paper: "https://arxiv.org/pdf/2503.04724", GitHub: "https://github.com/mbzuai-oryx/LLMVoX" },
+    },
+    {
+      id: "bimedix2",
+      date: "2024-12",
+      title: "BiMediX2: Bio-Medical EXpert LMM for Diverse Medical Modalities",
+      short: "BiMediX2",
+      authors: "S. S. Mullappilly*, <u>M. I. Kurpath</u>*, S. Pieri, S. Y. Alseiari, S. Cholakkal, K. M. Aldahmani, …, H. Cholakkal",
+      venue: "EMNLP 2025 Findings",
+      year: 2025,
+      summary: "A bilingual (Arabic-English) medical LMM across diverse imaging modalities. Winner of the Meta Llama Impact Innovation Award 2024.",
+      media: { type: "image", src: "shared/assets/bimedix2.jpg", fit: "contain", bg: "#ffffff", ratio: "1400 / 528" },
+      links: { Paper: "https://arxiv.org/pdf/2412.07769", GitHub: "https://github.com/mbzuai-oryx/BiMediX2" },
+    },
+    {
+      id: "teleop",
+      date: "2024-01",
+      title: "An IMUs and Potentiometer-based Controller for Robotic Arm-Hand Teleoperation",
+      short: "Arm-Hand Teleoperation",
+      authors: "<u>M. I. Kurpath</u>, P. K. Adwai, J. Bodireddy, C. K, N. S. K",
+      venue: "Sensors and Actuators A: Physical",
+      year: 2024,
+      summary: "A wearable controller capturing 17 DoF of human arm-hand motion for robot teleoperation.",
+      media: { type: "image", src: "shared/assets/teleop.jpg", fit: "cover", ratio: "1400 / 789" },
+      links: { Paper: "https://doi.org/10.1016/j.sna.2024.115019", GitHub: "https://github.com/k-m-irfan/Humanoid_Robot_Arm_Controller" },
+    },
+  ],
+
+  experience: [
+    {
+      when: "Aug 2025 to Present",
+      org: "MBZUAI",
+      role: "PhD Student, Computer Vision",
+      place: "Abu Dhabi, UAE",
+      text: "Advised by Prof. Hisham Cholakkal. Leading Omni-Embed-Mini (compact omni-modal embeddings) and LongShOT (omni-modal long-video reasoning with agents), co-leading MediX-R1 (open-ended medical RL). Reviewer for CVPR, NeurIPS and Springer Nature journals.",
+    },
+    {
+      when: "Mar 2024 to Aug 2025",
+      org: "MBZUAI",
+      role: "Research Associate",
+      place: "Abu Dhabi, UAE",
+      text: "Co-first author of BiMediX2 (Meta Llama Impact Innovation Award), co-developed LLMVoX and the ViMUL evaluation toolkit, mentored an MSc thesis (MAviS) and UGRIP interns. Built live demos for GITEX, UNGA79, Abu Dhabi Sustainability Week and Machines Can See.",
+    },
+    {
+      when: "Jul 2022 to Feb 2024",
+      org: "CEET, IIT Madras Research Park",
+      role: "Project Associate",
+      place: "Chennai, India",
+      text: "Multilingual voice banking across seven Indian languages (ASR, MT, TTS), Indian Sign Language recognition, and a speech-controlled wheelchair guide.",
+    },
+    {
+      when: "2017 to 2021",
+      org: "NIT Puducherry",
+      role: "B.Tech, Electrical and Electronics Engineering",
+      place: "Karaikal, India",
+      text: "Wearable arm-hand teleoperation controller, published in the Sensors & Actuators A journal.",
+    },
+  ],
+
+  // pi: principal investigator, shown under the note
+  awards: [
+    { year: "2026", title: "Wearable AI Grand Challenge @ ECCV 2026", note: "1st place, EgoConv track: StreamShot, streaming multi-turn conversation over long egocentric video. Runner-up, EgoLongQA track: LongShotV2, long egocentric video QA.", link: "https://lnkd.in/p/dQV43V4m" },
+    { year: "2025", title: "NVIDIA Academic Grant", note: "To advance clinical reasoning capabilities of healthcare LLMs and LMMs", pi: "Dr. Hisham Cholakkal" },
+    { year: "2025", title: "Meta Regional Research Grant", note: "For Project OMER: building multimodal LLMs for smart wearables", pi: "Dr. Hisham Cholakkal" },
+    { year: "2024", title: "Meta Llama Impact Innovation Award", note: "For the project BiMediX2: building an Arabic-English bilingual medical LMM", pi: "Dr. Hisham Cholakkal", link: "https://ai.meta.com/blog/llama-impact-grant-innovation-award-winners-2024/" },
+  ],
+
+
+  service: [
+    { role: "Reviewer", where: "CVPR", note: "IEEE/CVF Conference on Computer Vision and Pattern Recognition" },
+    { role: "Reviewer", where: "NeurIPS", note: "Conference on Neural Information Processing Systems" },
+    { role: "Reviewer", where: "Springer Nature", note: "Journals" },
+    { role: "Mentor", where: "MBZUAI", note: "UGRIP undergraduate interns" },
+    { role: "Mentor", where: "AI for Africa Bootcamp 2026", note: "MBZUAI × African Leadership Academy, Johannesburg: graduate mentor to high school students", link: "https://ai4africamp.com/" },
+    { role: "Mentor", where: "IIT Madras Research Park", note: "Summer interns at CEET-IITMRP" },
+  ],
+
+
+};

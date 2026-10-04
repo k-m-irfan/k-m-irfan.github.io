@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohammed Irfan</title>
+<meta name="description" content="Research portfolio: multimodal AI, omni-modal video, medical VLMs, speech.">
+<script src="shared/data.js"></script>
+<script src="shared/brand-icons.js"></script>
+<style>
+  /* Flat system: every surface is one solid color at full opacity.
+     No gradients, shadows, blur or translucency. */
+  :root {
+    --bg: #ffffff;
+    --ink: #0f1115;
+    --ink-2: #5a5f6b;
+    --hair: #dfe3ea;
+    --field: #eaf0fd;
+    --on-field: #0d1f4f;
+    --field-hair: #c7d3f2;
+    --link: #1f45d6;
+    --accent-ink: #ffffff;
+    --helv: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --display: var(--helv);
+    --sans: var(--helv);
+    --label: var(--helv);
+    --gutter: 40px;
+    --bar: 62px;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e0f12; --ink: #e8eaef; --ink-2: #9aa0ad; --hair: #2a2d34;
+      --field: #121a2e; --on-field: #dbe3fa; --field-hair: #2a3658;
+      --link: #8fa6ff; --accent-ink: #0e0f12;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e0f12; --ink: #e8eaef; --ink-2: #9aa0ad; --hair: #2a2d34;
+    --field: #121a2e; --on-field: #dbe3fa; --field-hair: #2a3658;
+    --link: #8fa6ff; --accent-ink: #0e0f12;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--bar); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--sans); font-size: 16px; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img, video { display: block; }
+  .wrap { max-width: 1320px; margin: 0 auto; padding: 0 var(--gutter); }
+  .lbl { font-family: var(--label); font-size: 12.5px; font-weight: 500; letter-spacing: .01em; font-variant-numeric: tabular-nums; }
+  .caps { text-transform: uppercase; letter-spacing: .1em; font-size: 11.5px; }
+  :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+  /* fields: full-bleed solid color bands */
+  .field { background: var(--field); color: var(--on-field); --c: var(--on-field); --c-hair: var(--on-field); }
+  .paper { --c: var(--ink); --c-hair: var(--hair); }
+  .field + .field { border-top: 1px solid var(--field-hair); }
+
+  /* top bar */
+  .bar { position: sticky; top: 0; z-index: 20; height: var(--bar); transition: background-color .3s, border-color .3s; background: var(--bg); border-bottom: 1.5px solid var(--ink); }
+  .bar .wrap { display: flex; align-items: center; gap: 28px; height: 100%; }
+  .brand { font-family: var(--display); font-weight: 500; font-size: 18px; letter-spacing: -.01em; }
+  .nav { display: flex; gap: 22px; margin-left: auto; font-size: 14px; font-weight: 500; }
+  .nav a { position: relative; padding: 4px 0; }
+  .nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.5px; background: currentColor;
+    transform: scaleX(0); transform-origin: right; transition: transform .35s var(--ease);
+  }
+  .nav a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .barright { display: flex; gap: 10px; align-items: center; }
+  .sq {
+    width: 36px; height: 36px; display: grid; place-items: center; cursor: pointer;
+    background: var(--bg); color: var(--ink); border: 1px solid var(--ink);
+  }
+  .sq:hover { background: var(--ink); color: var(--bg); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 16px;
+    font-size: 14px; font-weight: 500; border: 1px solid var(--c, var(--ink)); color: var(--c, var(--ink));
+    transition: background .12s, color .12s;
+  }
+  .btn:hover { background: var(--c, var(--ink)); color: var(--bg); }
+  .field .btn:hover { color: var(--field); }
+  .btn.solid { background: var(--link); border-color: var(--link); color: var(--accent-ink); }
+  .btn.solid:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+
+  /* hero: always exactly one viewport tall, minus the top bar.
+     Type scales with height as well as width, and secondary
+     pieces drop out on short screens instead of overflowing. */
+  .hero { height: calc(100vh - var(--bar)); height: calc(100svh - var(--bar)); overflow: hidden; }
+  .hero .wrap { height: 100%; display: flex; flex-direction: column; padding-top: clamp(16px, 4.5vh, 44px); padding-bottom: clamp(16px, 4.5vh, 44px); }
+  .top { flex: 1 1 auto; display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); gap: clamp(32px, 4vw, 64px); align-items: stretch; padding-bottom: clamp(14px, 3vh, 32px); }
+  .hero h1 {
+    font-family: var(--display); font-weight: 500; letter-spacing: -.035em; line-height: .95;
+    font-size: clamp(30px, min(4.4vw, 7vh), 68px); margin: 0;
+  }
+  .kicker .narrow { display: none; }
+  .kicker { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: clamp(10px, 2vh, 18px); }
+  .intro { display: flex; flex-direction: column; min-width: 0; }
+  .bio, .tagline { font-size: clamp(15px, min(1.4vw, 2.5vh), 21px); line-height: 1.55; margin: clamp(14px, 3vh, 28px) 0 0; }
+  .bio, .tagline { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .bio p { margin: 0; }
+  .bio b { font-weight: 600; }
+  .bio p + p { margin-top: .8em; }
+  .tagline { display: none; }
+  .side { display: flex; flex-direction: column; gap: clamp(14px, 2.6vh, 24px); min-width: 0; }
+  .photo {
+    margin: 0; width: min(100%, calc(44vh * .8)); aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden;
+    background: var(--field-hair); color: var(--on-field); display: grid; place-items: center; align-content: center; gap: 6px;
+  }
+  .photo { position: relative; }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; transform: scale(1.25); transform-origin: 50% 45%; }
+  .photo b { font-size: clamp(28px, 6vh, 56px); font-weight: 500; letter-spacing: -.03em; line-height: 1; }
+  .upcoming .lbl.caps { display: block; padding-bottom: 8px; border-bottom: 1px solid var(--on-field); }
+  .up { display: grid; grid-template-columns: 62px minmax(0, 1fr) 16px; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--field-hair); font-size: 13.5px; line-height: 1.4; align-items: baseline; }
+  .up b { font-weight: 500; }
+  a.up:hover .t { text-decoration: underline; text-underline-offset: 3px; }
+  .cta {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 24px; align-items: center;
+    padding-top: clamp(14px, 2.5vh, 24px); border-top: 1px solid var(--on-field);
+  }
+  .hero .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .cv {
+    display: inline-flex; align-items: center; gap: 14px; height: 44px; padding: 0 20px;
+    background: var(--link); color: var(--accent-ink); border: 1px solid var(--link);
+    font-size: 17px; font-weight: 500; letter-spacing: -.01em; transition: background .12s, color .12s;
+  }
+  .cv svg { width: 18px; height: 18px; transition: transform .12s; }
+  .cv:hover { background: var(--on-field); border-color: var(--on-field); color: var(--field); }
+  .cv:hover svg { transform: translateY(3px); }
+  /* short screens: swap the bio for the one-line tagline, then drop extras */
+  @media (max-height: 700px), (max-width: 720px) and (max-height: 1100px) { .bio { display: none; } .tagline { display: block; } }
+  @media (max-height: 620px), (max-width: 720px) and (max-height: 760px) { .upcoming { display: none; } }
+  @media (max-height: 460px) { .photo, .side { display: none; } .top { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-height: 500px) { .kicker { display: none; } }
+  @media (max-height: 420px) { .hero .links { display: none; } }
+
+  /* sections */
+  section { padding: 96px 0; }
+  .sh {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; align-items: baseline;
+    position: relative; padding-top: 16px; margin-bottom: 48px;
+  }
+  .sh::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1.5px; background: var(--c); transform-origin: left; }
+  .sh h2 { font-family: var(--display); font-weight: 500; font-size: clamp(26px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -.025em; margin: 0; }
+  .sh .meta { text-align: right; }
+
+  /* featured research */
+  .fp {
+    display: grid; grid-template-columns: minmax(0, 6.3fr) minmax(0, 5.7fr); gap: 48px; align-items: start;
+    padding: 40px 0; border-top: 1px solid var(--hair);
+  }
+  .fp:first-child { border-top: 0; padding-top: 0; }
+  /* frame takes the media's own ratio; tall media gets a narrower frame, never a crop */
+  .media {
+    position: relative; overflow: hidden; border-radius: 12px; background: var(--hair);
+    justify-self: center; /* portrait media sits centred in its column */
+    aspect-ratio: var(--ar, 16 / 10); width: min(100%, calc(480px * (var(--ar, 1.6))));
+  }
+  .media video, .media img { width: 100%; height: 100%; object-fit: cover; }
+  .fp .body { display: flex; flex-direction: column; gap: 14px; }
+  .fp .idx { display: flex; flex-wrap: wrap; gap: 4px 18px; color: var(--ink-2); }
+  .fp .idx .v { color: var(--link); font-weight: 500; }
+  .fp h3 { font-family: var(--display); font-weight: 500; font-size: clamp(28px, 2.8vw, 40px); line-height: 1.05; letter-spacing: -.03em; margin: 4px 0 0; }
+  .fp .full { font-size: 17px; line-height: 1.35; color: var(--ink-2); }
+  .fp p { margin: 0; font-size: 16px; }
+  .auth { color: var(--ink-2); font-size: 14px; }
+  .auth u { color: var(--ink); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--ink); }
+  .plinks { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+  .plinks a {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; font-weight: 500; padding: 6px 12px; border: 1px solid var(--ink);
+    transition: background .12s, color .12s;
+  }
+  .plinks a:hover { background: var(--ink); color: var(--bg); }
+  .ic { width: 14px; height: 14px; flex: none; }
+  .ic.brand { fill: currentColor; }
+  .aw b .ic { width: 18px; height: 18px; }
+  .ic.line { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: square; stroke-linejoin: miter; }
+
+  /* full publication list */
+  .sub { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 72px 0 0; padding-bottom: 12px; border-bottom: 1.5px solid var(--ink); }
+  .sub h3 { font-family: var(--display); font-weight: 500; font-size: 21px; letter-spacing: -.02em; margin: 0; }
+  .yr { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; border-bottom: 1px solid var(--hair); }
+  .yr > .y { font-family: var(--display); font-weight: 500; font-size: 22px; padding-top: 20px; letter-spacing: -.02em; }
+  .pr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 32px; padding: 20px 0; }
+  .pr + .pr { border-top: 1px solid var(--hair); }
+  .pr h4 { font-family: var(--display); font-weight: 500; font-size: 18px; line-height: 1.3; letter-spacing: -.01em; margin: 0 0 6px; }
+  .pr .vn { color: var(--link); font-weight: 500; margin-top: 8px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .pr .vn span:not(:first-child) { color: var(--ink-2); font-weight: 400; }
+  .pr .plinks { margin: 0; padding: 0; align-content: start; justify-content: flex-end; max-width: 400px; }
+
+  /* news */
+  .nrow { display: grid; grid-template-columns: 96px 110px minmax(0, 1fr) 20px; gap: 16px; padding: 18px 0; border-top: 1px solid var(--field-hair); align-items: baseline; }
+  .nrow .txt { font-size: 17px; line-height: 1.45; }
+  .nrow .txt b { font-weight: 500; }
+  .tag { justify-self: start; }
+  .tag.hot { background: var(--link); color: var(--accent-ink); padding: 3px 8px; }
+  a.nrow:hover .txt { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+  .arrow { width: 16px; height: 16px; flex: none; transition: transform .12s; }
+  a:hover > .arrow, a:hover .arrow { transform: translate(2px, -2px); }
+  .more { display: flex; justify-content: flex-start; padding-top: 24px; border-top: 1px solid var(--field-hair); }
+  .more button { font: inherit; background: none; cursor: pointer; }
+
+  /* experience */
+  .xp { display: grid; grid-template-columns: 96px minmax(0, 4fr) minmax(0, 6fr); gap: 16px 32px; padding: 28px 0; border-top: 1px solid var(--hair); }
+  .xp:first-child { border-top: 0; padding-top: 0; }
+  .xp .when { color: var(--ink-2); padding-top: 8px; }
+  .xp h3 { font-family: var(--display); font-weight: 500; font-size: 24px; line-height: 1.1; letter-spacing: -.02em; margin: 0 0 8px; }
+  .xp .role { font-weight: 500; font-size: 15px; }
+  .xp .place { color: var(--ink-2); font-size: 14px; }
+  .xp p { margin: 0; font-size: 16px; }
+  .sv { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px 32px; padding: 20px 0; border-bottom: 1px solid var(--hair); align-items: baseline; }
+  .sv .items { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px 32px; }
+  .sv b { display: block; font-size: 17px; font-weight: 500; letter-spacing: -.01em; margin-bottom: 2px; }
+  .sv .items span { color: var(--ink-2); font-size: 14px; }
+  .svl { display: flex; align-items: center; gap: 6px; width: fit-content; margin-bottom: 2px; }
+  .svl b { margin-bottom: 0; }
+  .svl .arrow { width: 13px; height: 13px; }
+  .svl:hover b { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* awards & recognition (blue band) */
+  .aw { display: grid; grid-template-columns: 96px minmax(0, 1fr) 16px; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--field-hair); align-items: baseline; }
+  .aw .y { font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: -.02em; }
+  .aw b { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 17px; margin-bottom: 4px; }
+  .aw .n { font-size: 15px; }
+  .aw .pi { margin-top: 6px; }
+  a.aw:hover b { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+
+
+  /* footer */
+  footer { padding: 0 0 32px; }
+  .fine { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 0; padding-top: 20px; border-top: 1px solid var(--field-hair); }
+
+  @media (max-width: 1080px) {
+    .nav { display: none; }
+    .barright { margin-left: auto; }
+    .fp { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+        }
+  @media (max-width: 720px) {
+    :root { --gutter: 16px; }
+    section { padding: 64px 0; }
+    .hero h1 { font-size: clamp(28px, min(8.5vw, 6vh), 46px); }
+    .top { grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; align-content: center; }
+    /* phones: a full-width photo whose height takes whatever room the hero has left */
+    .side { order: -1; }
+    .photo { width: 100%; aspect-ratio: auto; height: clamp(120px, calc(100svh - var(--bar) - var(--phone-rest, 470px)), 420px); }
+    .photo img { object-position: 50% 44%; transform: none; }
+    .upcoming { display: none; }
+    .cta { grid-template-columns: minmax(0, 1fr); }
+    .kicker .wide { display: none; }
+    .kicker .narrow { display: inline; }
+    .cv { justify-content: space-between; }
+    .hero .btn { height: 32px; padding: 0 12px; font-size: 13px; }
+    .sh { grid-template-columns: minmax(0, 1fr); gap: 8px; margin-bottom: 36px; }
+    .sh .meta { text-align: left; }
+    .yr { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .pr { grid-template-columns: minmax(0, 1fr); }
+    .pr .plinks { justify-content: flex-start; }
+    .nrow { grid-template-columns: auto minmax(0, 1fr); gap: 8px 16px; }
+    .nrow .txt { grid-column: 1 / -1; }
+    .nrow > .arrow, .nrow > .sp { display: none; }
+    .xp { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+    .xp .when { padding-top: 0; }
+    .sv { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+          .brand { font-size: 18px; }
+  }
+  /* short phones: smaller photo so the hero still fits */
+  @media (max-width: 720px) and (max-height: 580px) { .photo { display: none; } }
+  /* motion: entrance and reveal effects are skipped for reduced motion */
+  body, .field { transition: background-color .3s, color .3s; }
+  .media video, .media img { transition: transform .9s var(--ease); }
+  .fp:hover .media video, .fp:hover .media img { transform: scale(1.025); }
+  /* media clipped to its own outline (e.g. a phone recording); a pure-CSS shape, so nothing extra loads */
+  .media.shaped { border-radius: 0; }
+  .fp:hover .media.shaped video, .fp:hover .media.shaped img { transform: none; } /* zoom would slide the phone off its outline */
+  .btn .ic, .plinks .ic { transition: transform .25s var(--ease); }
+  .btn:hover .ic, .plinks a:hover .ic { transform: translateY(-1px); }
+  @media (prefers-reduced-motion: no-preference) {
+    .hero h1, .hero .kicker, .bio, .tagline, .photo, .upcoming, .hero .cta { animation: rise .9s var(--ease) both; }
+    .hero .kicker, .photo { animation-delay: .06s; }
+    .bio, .tagline, .upcoming { animation-delay: .14s; }
+    .hero .cta { animation-delay: .34s; }
+    .anim [data-r] { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .anim [data-r].in { opacity: 1; transform: none; }
+    .anim .sh[data-r]::before { transform: scaleX(0); transition: transform 1.1s var(--ease) .1s; }
+    .anim .sh[data-r].in::before { transform: scaleX(1); }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" id="brand"></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#news">News</a>
+      <a href="#experience">Experience</a>
+      <a href="#recognition">Awards</a>
+    </nav>
+    <div class="barright">
+      <button class="sq" id="theme" aria-label="Toggle light and dark theme" title="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><circle cx="12" cy="12" r="8"/><path d="M12 4v16" /><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+      </button>
+      <a class="btn solid" id="cvbtn" download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><path d="M12 3v13m0 0l-5-5m5 5l5-5M4 21h16"/></svg>CV
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="field hero">
+    <div class="wrap">
+      <div class="top">
+        <div class="intro">
+          <h1 id="name"></h1>
+          <div class="kicker lbl caps" id="kicker"></div>
+          <div class="bio" id="bio"></div>
+          <p class="tagline" id="tagline"></p>
+        </div>
+        <aside class="side">
+          <figure class="photo" id="photo"></figure>
+          <div class="upcoming" id="upcoming" aria-label="Upcoming"></div>
+        </aside>
+      </div>
+      <div class="cta">
+        <div class="links" id="links"></div>
+        <a class="cv" id="cvbig" download>
+          <span>Download CV</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M12 3v14m0 0l-6-6m6 6l6-6M4 21h16"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section id="research" class="paper">
+    <div class="wrap">
+      <div class="sh"><h2>Research</h2><span class="lbl meta" id="pubcount"></span></div>
+      <div id="featured"></div>
+      <div class="sub"><h3>All publications</h3><span class="lbl" id="idxnote"></span></div>
+      <div id="publist"></div>
+    </div>
+  </section>
+
+  <section id="news" class="field">
+    <div class="wrap">
+      <div class="sh"><h2>News</h2><span class="lbl meta">Updates &amp; talks</span></div>
+      <div id="newslist"></div>
+    </div>
+  </section>
+
+  <section id="experience" class="paper">
+    <div class="wrap">
+      <div class="sh"><h2>Experience</h2><span class="lbl meta">Career &amp; education</span></div>
+      <div id="timeline"></div>
+      <div class="sub"><h3>Service &amp; mentoring</h3></div>
+      <div id="service"></div>
+    </div>
+  </section>
+
+  <section id="recognition" class="field">
+    <div class="wrap">
+      <div class="sh"><h2>Awards &amp; Recognition</h2><span class="lbl meta">Awards &amp; grants</span></div>
+      <div id="awards"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="field">
+  <div class="wrap">
+    <div class="fine lbl"><span id="copy"></span><span id="place"></span></div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const P = window.PROFILE;
+  const ICONS = window.BRAND_ICONS || {};
+  const $ = (id) => document.getElementById(id);
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const ext = (href) => href && /^https?:/.test(href) ? ` target="_blank" rel="noopener"` : "";
+  const arrow = `<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>`;
+  // line icons for actions; brand marks come from brand-icons.js
+  const LINE = {
+    project: "M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z",
+    paper: "M6 3h8l5 5v13H6zM14 3v5h5M9 13h7M9 17h7",
+    code: "M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16",
+    models: "M12 3l8 4.5v9L12 21l-8-4.5v-9zM12 12l8-4.5M12 12L4 7.5M12 12v9",
+    dataset: "M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3",
+    more: "M12 5v14M5 12h14",
+    less: "M5 12h14",
+    mail: "M3 5h18v14H3zM3 6l9 7 9-7",
+    demo: "M7 4v16l13-8z",
+    video: "M3 5h18v14H3zM10 9v6l5-3z",
+    blog: "M4 20h4L19 9l-4-4L4 16zM13 7l4 4",
+    leaderboard: "M4 20V11M10 20V4M16 20v-6M2 20h20",
+    link: "M7 17L17 7M8 7h9v9",
+  };
+  const HOSTS = [[/github\.com/, "github"], [/huggingface\.co/, "huggingface"], [/arxiv\.org/, "arxiv"], [/linkedin\.com/, "linkedin"],
+    [/instagram\.com/, "instagram"], [/doi\.org/, "doi"], [/scholar\.google/, "scholar"]];
+  const hostKey = (url) => (HOSTS.find(([re]) => re.test(url || "")) || [])[1];
+  const ORGS = [[/\bMeta\b/, "meta"], [/NVIDIA/, "nvidia"]];
+  const orgKey = (text) => (ORGS.find(([re]) => re.test(text || "")) || [])[1];
+  const COLORS = window.BRAND_COLORS || {}, FULL = window.BRAND_SVGS || {};
+  const icon = (k) => FULL[k]
+    ? `<svg class="ic brand" viewBox="${FULL[k].viewBox}" aria-hidden="true">${FULL[k].body}</svg>`
+    : ICONS[k]
+    ? `<svg class="ic brand" viewBox="0 0 24 24" aria-hidden="true"${COLORS[k] ? ` style="fill:${COLORS[k]}"` : ""}><path d="${ICONS[k]}"/></svg>`
+    : `<svg class="ic line" viewBox="0 0 24 24" aria-hidden="true"><path d="${LINE[k] || LINE.link}"/></svg>`;
+
+  // theme: follows the OS until the visitor picks one
+
+  const root = document.documentElement;
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  try { const t = localStorage.getItem("flat-theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  $("theme").onclick = () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    try { localStorage.setItem("flat-theme", root.dataset.theme); } catch (e) {}
+  };
+
+  document.title = `${P.name} · ${P.role}`;
+  $("brand").textContent = P.name;
+  $("cvbtn").href = $("cvbig").href = P.cv;
+
+  // hero
+  // full university name on wide screens, the short form on phones
+  const aff = P.affiliationFull ? `<span class="wide">${esc(P.affiliationFull)}</span><span class="narrow">${esc(P.affiliation)}</span>` : esc(P.affiliation);
+  $("kicker").innerHTML = [esc(P.role), aff, esc(P.location)].map((h) => `<span>${h}</span>`).join("");
+  $("name").textContent = P.name;
+  const emphasise = (t) => (P.bioEmphasis || []).reduce((h, e) => h.replace(esc(e), `<b>${esc(e)}</b>`), esc(t));
+  $("bio").innerHTML = P.bio.split(/\n\s*\n/).map((t) => `<p>${emphasise(t)}</p>`).join("");
+  $("tagline").textContent = P.tagline;
+  $("photo").innerHTML = P.photo
+    ? `<img src="${esc(P.photo)}" alt="${esc(P.name)}">`
+    : `<b>${esc(P.initials)}</b><span class="lbl caps">Photo</span>`; // placeholder until data.js sets photo
+  const upcoming = P.news.filter((n) => n.tag === "Upcoming").reverse(); // news is newest first; show soonest first
+  $("upcoming").innerHTML = upcoming.length ? `<span class="lbl caps">Upcoming</span>` + upcoming.map((n) => {
+    const inner = `<span class="lbl">${esc(n.date)}</span><span class="t">${n.text}</span>${n.link ? arrow : "<span></span>"}`;
+    return n.link ? `<a class="up" href="${esc(n.link)}"${ext(n.link)}>${inner}</a>` : `<div class="up">${inner}</div>`;
+  }).join("") : "";
+  const L = P.links;
+  const linkList = [
+    ["scholar", "Google Scholar", L.scholar],
+    ["github", "GitHub", L.github],
+    ["linkedin", "LinkedIn", L.linkedin],
+    ["huggingface", "Hugging Face", L.huggingface],
+  ].filter(([, , h]) => h);
+  $("links").innerHTML = linkList.map(([k, t, h]) => `<a class="btn" href="${esc(h)}"${ext(h)}>${icon(k)}${t}</a>`).join("");
+
+  // research
+  const pubs = P.publications; // data.js is ordered newest first
+  $("pubcount").textContent = `${pubs.length} papers`;
+  $("idxnote").textContent = "* equal contribution";
+  const linksHTML = (links) => Object.entries(links).map(([k, v]) => `<a href="${esc(v)}"${ext(v)}>${icon(hostKey(v) || k.toLowerCase().split(" ")[0])}${esc(k)}</a>`).join("");
+  const mediaHTML = (m, alt) => m.type === "video"
+    ? `<video data-src="${esc(m.src)}" poster="${esc(m.poster || "")}" muted loop playsinline preload="none" aria-label="${esc(alt)}"></video>`
+    : `<img src="${esc(m.src)}" alt="${esc(alt)}" loading="lazy">`;
+
+  $("featured").innerHTML = pubs.slice(0, 4).map((p) => `
+    <article class="fp" id="pub-${p.id}">
+      <div class="media${p.media.clip ? " shaped" : ""}" style="--ar: ${esc(p.media.ratio || "16 / 10")};${p.media.bg ? ` background:${esc(p.media.bg)};` : ""}${p.media.clip ? ` clip-path: ${esc(p.media.clip)};` : ""}">
+        ${mediaHTML(p.media, p.short)}
+      </div>
+      <div class="body">
+        <div class="idx lbl"><span class="v">${esc(p.venue)}</span></div>
+        <h3>${esc(p.short)}</h3>
+        <div class="full">${esc(p.title)}</div>
+        <p>${esc(p.summary)}</p>
+        <div class="auth">${p.authors}</div>
+        <div class="plinks">${linksHTML(p.links)}</div>
+      </div>
+    </article>`).join("");
+
+  const years = [...new Set(pubs.map((p) => p.year))];
+  $("publist").innerHTML = years.map((y) => `
+    <div class="yr">
+      <div class="y">${y}</div>
+      <div>${pubs.filter((p) => p.year === y).map((p) => `
+        <div class="pr">
+          <div>
+            <h4>${esc(p.title)}</h4>
+            <div class="auth">${p.authors}</div>
+            <div class="vn lbl"><span>${esc(p.venue)}</span></div>
+          </div>
+          <div class="plinks">${linksHTML(p.links)}</div>
+        </div>`).join("")}
+      </div>
+    </div>`).join("");
+
+  // news
+  const NEWS_SHOWN = 8;
+  const renderNews = (all) => {
+    const items = all ? P.news : P.news.slice(0, NEWS_SHOWN);
+    $("newslist").innerHTML = items.map((n) => {
+      const inner = `<span class="lbl">${esc(n.date)}</span><span class="tag lbl caps ${n.tag === "Upcoming" ? "hot" : ""}">${esc(n.tag)}</span><span class="txt">${n.text}</span>${n.link ? arrow : `<span class="sp"></span>`}`;
+      return n.link ? `<a class="nrow" href="${esc(n.link)}"${ext(n.link)}>${inner}</a>` : `<div class="nrow">${inner}</div>`;
+    }).join("") + (P.news.length > NEWS_SHOWN
+      ? `<div class="more"><button class="btn" id="morenews">${icon(all ? "less" : "more")}${all ? "Show fewer" : `Show all ${P.news.length} updates`}</button></div>` : "");
+    const b = $("morenews"); if (b) b.onclick = () => { renderNews(!all); reveal($("newslist")); };
+  };
+  renderNews(false);
+
+  // experience & service
+  $("timeline").innerHTML = P.experience.map((x) => `
+    <div class="xp">
+      <div class="when lbl">${esc(x.when)}</div>
+      <div><h3>${esc(x.org)}</h3><div class="role">${esc(x.role)}</div><div class="place">${esc(x.place)}</div></div>
+      <p>${esc(x.text)}</p>
+    </div>`).join("");
+  const GROUPS = { Reviewer: "Reviewing", Mentor: "Mentoring" };
+  const roles = [...new Set((P.service || []).map((s) => s.role))];
+  $("service").innerHTML = roles.map((r) => `
+    <div class="sv">
+      <span class="lbl caps">${esc(GROUPS[r] || r)}</span>
+      <div class="items">${P.service.filter((s) => s.role === r).map((s) => `<div>${s.link ? `<a class="svl" href="${esc(s.link)}"${ext(s.link)}><b>${esc(s.where)}</b>${arrow}</a>` : `<b>${esc(s.where)}</b>`}<span>${esc(s.note)}</span></div>`).join("")}</div>
+    </div>`).join("");
+
+  // recognition
+  $("awards").innerHTML = P.awards.map((a) => {
+    const inner = `<span class="y">${esc(a.year)}</span><div><b>${orgKey(a.title) ? icon(orgKey(a.title)) : ""}${esc(a.title)}</b><div class="n">${esc(a.note)}</div>${a.pi ? `<div class="pi lbl">PI: ${esc(a.pi)}</div>` : ""}</div>${a.link ? arrow : "<span></span>"}`;
+    return a.link ? `<a class="aw" href="${esc(a.link)}"${ext(a.link)}>${inner}</a>` : `<div class="aw">${inner}</div>`;
+  }).join("");
+
+
+  // footer
+  $("copy").textContent = `© ${new Date().getFullYear()} ${P.name}`;
+  $("place").textContent = `${P.affiliation} · ${P.location}`;
+
+  // reveal on scroll. Nothing starts hidden: an element is only hidden once the
+  // observer reports it below the viewport, so content can never get stuck invisible.
+  const REVEAL = ".sh, .fp, .sub, .yr, .nrow, .more, .xp, .sv, .aw";
+  const reveal = (() => {
+    if (still || !("IntersectionObserver" in window)) return () => {};
+    root.classList.add("anim");
+    const ro = new IntersectionObserver((entries) => {
+      let k = 0;
+      entries.forEach(({ target: el, isIntersecting, boundingClientRect: r }) => {
+        if (!el.dataset.seen) {
+          el.dataset.seen = "1";
+          if (!isIntersecting && r.top > 0) { el.setAttribute("data-r", ""); return; }
+          if (!isIntersecting) return; // above the viewport: leave it alone
+        }
+        if (!isIntersecting || !el.hasAttribute("data-r")) { if (isIntersecting) ro.unobserve(el); return; }
+        ro.unobserve(el);
+        const d = Math.min(k++, 6) * 70;
+        el.style.transitionDelay = `${d}ms`;
+        el.classList.add("in");
+        // hand transitions back to the element's own hover styles
+        setTimeout(() => { el.removeAttribute("data-r"); el.classList.remove("in"); el.style.transitionDelay = ""; }, 1000 + d);
+      });
+    }, { rootMargin: "0px 0px -6% 0px" });
+    return (scope) => scope.querySelectorAll(REVEAL).forEach((el) => { delete el.dataset.seen; ro.observe(el); });
+  })();
+  reveal(document);
+
+  // videos load and play only while on screen
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(({ target: v, isIntersecting }) => {
+      if (isIntersecting) {
+        if (v.dataset.src && !v.src) v.src = v.dataset.src;
+        if (!still) v.play().catch(() => {});
+      } else v.pause();
+    });
+  }, { threshold: 0.25 });
+  document.querySelectorAll("video").forEach((v) => io.observe(v));
+})();
+</script>
+</body>
+</html>
