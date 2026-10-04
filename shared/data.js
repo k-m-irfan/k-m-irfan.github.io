@@ -11,7 +11,7 @@ window.PROFILE = {
   location: "Abu Dhabi, UAE",
   photo: "shared/assets/me.jpg",
   tagline:
-    "My research centers on building multimodal AI systems for personalized assistance: systems that can see, listen, remember, reason, and speak.",
+    "I’m a PhD student in Computer Vision at MBZUAI in Abu Dhabi. My research centers on building multimodal AI systems for personalized assistance: systems that can see, listen, remember, reason, and speak.",
   // paragraphs separated by a blank line ("\n\n"); bioEmphasis phrases are set in bold
   bio:
     "I’m a PhD student in Computer Vision at MBZUAI in Abu Dhabi, advised by Prof. Hisham Cholakkal. I joined MBZUAI in 2024 as a Research Associate, after two years at IIT Madras Research Park building multilingual speech and sign-language systems.\n\n" +
