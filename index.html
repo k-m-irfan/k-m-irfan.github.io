@@ -104,7 +104,7 @@
   .tagline { display: none; }
   .side { display: flex; flex-direction: column; gap: clamp(14px, 2.6vh, 24px); min-width: 0; }
   .photo {
-    margin: 0; width: min(100%, calc(44vh * .8)); aspect-ratio: 4 / 5; border-radius: 12px; overflow: hidden;
+    margin: 0; width: min(100%, calc(44vh * .8)); aspect-ratio: 1; border-radius: 50%; overflow: hidden;
     background: var(--field-hair); color: var(--on-field); display: grid; place-items: center; align-content: center; gap: 6px;
   }
   .photo { position: relative; }
@@ -241,9 +241,9 @@
     section { padding: 64px 0; }
     .hero h1 { font-size: clamp(28px, min(8.5vw, 6vh), 46px); }
     .top { grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; align-content: center; }
-    /* phones: a full-width photo whose height takes whatever room the hero has left */
+    /* phones: a centred round photo sized by whatever room the hero has left */
     .side { order: -1; }
-    .photo { width: 100%; aspect-ratio: auto; height: clamp(120px, calc(100svh - var(--bar) - var(--phone-rest, 500px)), 420px); }
+    .photo { width: min(100%, clamp(120px, calc(100svh - var(--bar) - var(--phone-rest, 500px)), 320px)); margin: 0 auto; }
     .photo img { object-position: 50% 44%; transform: none; }
     .upcoming { display: none; }
     .cta { grid-template-columns: minmax(0, 1fr); }
