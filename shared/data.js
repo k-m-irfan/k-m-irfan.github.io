@@ -30,7 +30,7 @@ window.PROFILE = {
     { date: "Dec 2026", tag: "Upcoming", text: "Presenting <b>LongShOT</b> at <b>NeurIPS 2026</b>.", link: "https://longshot.cvmbzuai.com/" },
     { date: "Oct 2026", tag: "Upcoming", text: "Presenting <b>Omni-Embed-Mini</b> and <b>MediX-R1</b> at <b>EMNLP 2026</b>.", link: null },
     { date: "Sep 2026", tag: "Paper", text: "Released <b>Hard Vision, Easy Vision</b>: what GPT-6 Astra reveals across 55 vision benchmarks.", link: "https://arxiv.org/pdf/2609.35718" },
-    { date: "Sep 2026", tag: "Award", text: "<b>StreamShot</b> won <b>1st place</b> (EgoConv) and <b>LongShotV2</b> was <b>runner-up</b> (EgoLongQA) at the <b>Wearable AI Grand Challenge @ ECCV 2026</b>.", link: "https://lnkd.in/p/dQV43V4m" },
+    { date: "Sep 2026", tag: "Award", text: "<b>StreamShot</b> won <b>1st place</b> (EgoConv) and <b>LongShotV2</b> was <b>runner-up</b> (EgoLongQA) at the <b>Wearable AI Grand Challenge @ ECCV 2026</b>.", link: "https://wearable-ai-workshop.github.io/#:~:text=%F0%9F%8F%86%20Grand%20Challenge%20Winners" },
     { date: "Sep 2026", tag: "Paper", text: "<b>LongShOT</b> accepted to <b>NeurIPS 2026</b> as a poster.", link: "https://longshot.cvmbzuai.com/" },
     { date: "Aug 2026", tag: "Paper", text: "<b>Omni-Embed-Mini</b> and <b>MediX-R1</b> accepted to <b>EMNLP 2026 Findings</b>.", link: "https://omniembed.cvmbzuai.com/" },
     { date: "Jul 2026", tag: "Paper", text: "Released <b>LongShOT</b>, a benchmark and agent for omni-modal reasoning in long videos.", link: "https://longshot.cvmbzuai.com/" },
@@ -196,7 +196,7 @@ window.PROFILE = {
 
   // pi: principal investigator, shown under the note
   awards: [
-    { year: "2026", title: "Wearable AI Grand Challenge @ ECCV 2026", note: "1st place, EgoConv track: StreamShot, streaming multi-turn conversation over long egocentric video. Runner-up, EgoLongQA track: LongShotV2, long egocentric video QA.", link: "https://lnkd.in/p/dQV43V4m" },
+    { year: "2026", title: "Wearable AI Grand Challenge @ ECCV 2026", note: "1st place, EgoConv track: StreamShot, streaming multi-turn conversation over long egocentric video. Runner-up, EgoLongQA track: LongShotV2, long egocentric video QA.", link: "https://wearable-ai-workshop.github.io/#:~:text=%F0%9F%8F%86%20Grand%20Challenge%20Winners" },
     { year: "2025", title: "NVIDIA Academic Grant", note: "To advance clinical reasoning capabilities of healthcare LLMs and LMMs", pi: "Dr. Hisham Cholakkal" },
     { year: "2025", title: "Meta Regional Research Grant", note: "For Project OMER: building multimodal LLMs for smart wearables", pi: "Dr. Hisham Cholakkal" },
     { year: "2024", title: "Meta Llama Impact Innovation Award", note: "For the project BiMediX2: building an Arabic-English bilingual medical LMM", pi: "Dr. Hisham Cholakkal", link: "https://ai.meta.com/blog/llama-impact-grant-innovation-award-winners-2024/" },
